@@ -1,0 +1,31 @@
+<section>
+    <div class="row">
+        <div class="col-xl-3 col-md-4 col-sm-6 col-12" *ngFor="let customer of customers">
+            <mat-card class="card" [routerLink]="['/customer-information', customer.id]">
+                <mat-card-header class="card-header">
+                    <mat-card-title class="card-header-title">{{customer.name.firstName}} {{customer.name.lasttName}}
+                    </mat-card-title>
+                    <button class="ml-auto " mat-icon-button (click)="$event.stopPropagation();">
+                        <mat-icon class="d-flex align-items-center"><img
+                                src="../../../../assets/pics/icons/icons8-edit-64-light.png" alt="edit">
+                        </mat-icon>
+                    </button>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="d-flex">
+                        <img *ngIf="customer.gender == 'male'" class="img" src="../../../../assets/pics/icons/man.png"
+                            alt="man">
+                        <img *ngIf="customer.gender == 'female'" class="img"
+                            src="../../../../assets/pics/icons/woman.png" alt="man">
+                        <div class="row">
+                            <p class="col-12 m-2 font-weight-bold">{{customer.address.state}},
+                                {{customer.address.cityName}}</p>
+                            <button class="ml-2" mat-button color="primary" (click)="$event.stopPropagation();">View
+                                Orders</button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</section>

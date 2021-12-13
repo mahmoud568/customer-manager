@@ -1,0 +1,43 @@
+.container-fuild {
+  padding: 0;
+  .row {
+    .col-12 {
+      .customer-img {
+        width: 1.5rem;
+        background-color: white;
+        padding-bottom: 1rem;
+      }
+
+      .customer-text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .sec-tow {
+    .row {
+      [class*="col-"] {
+        opacity: 0.5;
+        a {
+          text-decoration: none;
+          color: black;
+          img {
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+          span {
+            padding-left: 0.4rem;
+          }
+        }
+      }
+      .active {
+        opacity: 1.5;
+      }
+    }
+  }
+}
+.sec-three {
+  padding: 0;
+}
+a {
+  cursor: pointer;
+}

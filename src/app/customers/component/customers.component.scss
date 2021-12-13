@@ -1,0 +1,58 @@
+.container-fuild {
+  .row {
+    .col-12 {
+      .customer-img {
+        width: 1.5rem;
+        padding-bottom: 0.7rem;
+      }
+
+      .customer-text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .sec-tow {
+    .nav {
+      [class*="item-"] {
+        cursor: pointer;
+        display: flex;
+        flex-basis: 25%;
+        opacity: 0.5;
+        @media only screen and (max-width: 800px) and (min-width: 768px) {
+          flex-basis: 50%;
+        }
+        @media only screen and (max-width: 600px) {
+          flex-basis: 100%;
+          line-height: 2rem;
+        }
+        a {
+          text-decoration: none;
+          color: black;
+          @media only screen and (max-width: 600px) {
+            align-items: center;
+          }
+        }
+        img {
+          width: 1.2rem;
+          height: 1.2rem;
+          margin-right: 5px;
+          span {
+            padding-left: 0.4rem;
+          }
+        }
+      }
+      .active {
+        opacity: 1.5;
+        font-weight: 800;
+      }
+    }
+    .Search {
+      display: flex;
+      justify-content: flex-end;
+      @media only screen and (max-width: 600px) {
+        justify-content: flex-start;
+        margin-left: -1.3rem;
+      }
+    }
+  }
+}

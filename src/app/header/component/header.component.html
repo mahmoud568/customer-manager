@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand navbar-light bg-primary">
+    <a class="navbar-brand" href="#"><img src="assets\pics\icons\customers-icon-35912.png" alt="customer icon">
+        Customer Manger</a>
+
+    <div class="collapse navbar-collapse" id="navbar-list">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/Customers">Customers</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/Orders">Orders</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/About">About</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/Login">Login</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+    <img *ngIf="!navbarOpen" src="assets\pics\icons\icons8-menu-50.png" alt="customer icon" width="32px">
+    <img *ngIf="navbarOpen" src="assets\pics\icons\icons8-close.svg" alt="customer icon" width="32px">
+
+</button>
+
+<!-- trigger toggleNavbar() on children elemnt to close the sidebar on click -->
+<div id="mySidenav" class="sidenav">
+    <a class="navbar-brand" href="#" (click)="toggleNavbar()"><img src="assets\pics\icons\customers-icon-35912.png"
+            alt="customer icon">
+        Customer Manger </a>
+    <div routerLinkActive="active"><a class="nav-link" routerLink="/Customers" (click)="toggleNavbar()">Customers</a>
+    </div>
+    <div routerLinkActive="active"><a class="nav-link" routerLink="/Orders" (click)="toggleNavbar()">Orders</a></div>
+    <div routerLinkActive="active"><a class="nav-link" routerLink="/About" (click)="toggleNavbar()">About</a></div>
+    <div routerLinkActive="active"><a class="nav-link" routerLink="/Login" (click)="toggleNavbar()">Login</a></div>
+</div>

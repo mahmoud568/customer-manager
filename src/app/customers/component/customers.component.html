@@ -1,0 +1,55 @@
+<section>
+    <div class="container-fuild px-5">
+        <div class="row">
+            <div class="sec-one col-12">
+                <img class="customer-img" src="../../../assets/pics/icons/customer.png" alt="customer">
+                <span class="customer-text"> Customers</span>
+            </div>
+        </div>
+        <div class="sec-tow row px-5 mt-3">
+            <nav class="nav col-md-7">
+                <div class="item-1" [ngClass]="selectedView==='card'? 'active' : ''">
+                    <a (click)="selectView('card')" class="row">
+                        <img src="../../../assets/pics/icons/show-all-views.png" />
+                        <span>Card View</span>
+                    </a>
+                </div>
+                <div class="item-2" [ngClass]="selectedView==='list'? 'active' : ''">
+                    <a (click)="selectView('list')" class="row">
+                        <img src="../../../assets/pics/icons/day-view.png" />
+                        <span>List View</span>
+                    </a>
+                </div>
+                <div class="item-3" [ngClass]="selectedView==='map'? 'active' : ''">
+                    <a (click)="selectView('map')" class="row">
+                        <img
+                            src="../../../assets/pics/icons/external-map-pin-basic-ui-elements-flatart-icons-outline-flatarticons.png" />
+                        <span>Map View</span>
+                    </a>
+                </div>
+                <div class="item-4" [ngClass]="selectedView==='addCustomer'? 'active' : ''">
+                    <a (click)="selectView('addCustomer')" class="row">
+                        <img src="../../../assets/pics/icons/external-add-mintab-for-ios-becris-lineal-becris-2.png" />
+                        <span>New Customer</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="Search col-md-5">
+                <div>
+                    <div>Filter:</div>
+                    <input type="text">
+                </div>
+
+            </div>
+        </div>
+        <div class="row pl-3 my-1 sec-three">
+            <div class="col-12">
+                <!-- <router-outlet></router-outlet> -->
+                <app-card-view *ngIf="selectedView === 'card'" [customers]="customers"></app-card-view>
+                <app-list-view *ngIf="selectedView === 'list'"></app-list-view>
+                <app-map-view *ngIf="selectedView === 'map'"></app-map-view>
+                <app-new-customer *ngIf="selectedView === 'addCustomer'"></app-new-customer>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+<div class="container-fluid" *ngIf="customer">
+    <div class="information">
+        <div class="item-1">
+            <div class="img">
+                <img *ngIf="customer.gender === 'male'" class="img" src="../../../../assets/pics/icons/man.png"
+                    alt="man">
+                <img *ngIf="customer.gender === 'female'" class="img" src="../../../../assets/pics/icons/woman.png"
+                    alt="man">
+            </div>
+        </div>
+        <div class="item-2">
+            <div class="name">{{customer.name.firstName}} {{customer.name.lasttName}}</div>
+            <div class="address">
+                <div>{{customer.address.streetAddress}}.</div>
+                <div> {{customer.address.cityName}}, {{customer.address.state}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="map">
+
+    </div>
+</div>

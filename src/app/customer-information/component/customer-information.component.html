@@ -1,0 +1,39 @@
+<section>
+    <div class="container-fuild px-5 ">
+        <div class="row py-3">
+            <div class="col-12 sec-one">
+                <img class="customer-img" src="../../../assets/pics/icons/customer.png" alt="customer">
+                <span class="customer-text"> Customer Information</span>
+            </div>
+        </div>
+        <div class="row px-4 mt-3 sec-tow">
+            <nav class="col-md-7 row">
+                <div class="col-md-4" [ngClass]="selectedView==='details'? 'active' : ''">
+                    <a (click)="selectView('details')" class="row">
+                        <img src="../../../assets/pics/icons/icons8-more-details-24.png" />
+                        <span>Customer Details</span>
+                    </a>
+                </div>
+                <div class="col-md-4" [ngClass]="selectedView==='orders'? 'active' : ''">
+                    <a (click)="selectView('orders')" class="row">
+                        <img src="../../../assets/pics/icons/icons8-tag-64.png" />
+                        <span>Customer Orders</span>
+                    </a>
+                </div>
+                <div class="col-md-4" [ngClass]="selectedView==='edit'? 'active' : ''">
+                    <a (click)="selectView('edit')" class="row">
+                        <img src="../../../assets/pics/icons/icons8-edit-64.png" />
+                        <span>Edit Customer</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="row  py-5 sec-three">
+            <div class="col-12">
+                <app-details *ngIf="selectedView === 'details'" [customer]="customer"></app-details>
+                <app-edit *ngIf="selectedView === 'orders'"></app-edit>
+                <app-orders *ngIf="selectedView === 'edit'"></app-orders>
+            </div>
+        </div>
+    </div>
+</section>
