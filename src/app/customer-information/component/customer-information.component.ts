@@ -26,7 +26,7 @@ export class CustomerInformationComponent implements OnInit {
       .getCustomerByID(CustomerID)
       .subscribe((res: any) => {
         this.customer = res.customer;
-        console.log(this.customer);
+        // console.log(this.customer);
       });
   }
 

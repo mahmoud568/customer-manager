@@ -17,6 +17,9 @@
         </div>
     </div>
     <div class="map">
-
+        <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="location.zoom">
+            <agm-marker [latitude]="location.latitude" [longitude]="location.longitude">
+            </agm-marker>
+        </agm-map>
     </div>
 </div>

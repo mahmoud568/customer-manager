@@ -18,6 +18,15 @@ var longitude = faker.address.longitude;
 var randomEmail = faker.internet.email; 
 var totalPayment = faker.datatype.float; 
 // var randomCard = faker.helpers.createCard(); 
+var adress; 
+
+const request = require('request');
+request('https://api.3geonames.org/?randomland=eg&json=1', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          adress = body 
+        }
+      })
+
 let cutomers = [];
 
 for (let i = 0; i < 10; i++) {
@@ -52,7 +61,8 @@ app.get('/customers', function (req, res) {
 
 app.get('/customer-information', function (req, res) {
   res.json({
-    customer: cutomers.find(x => x.id ===  parseInt(req.query.userid))
+    customer: cutomers.find(x => x.id ===  parseInt(req.query.userid)),
+    
   })
 })
  

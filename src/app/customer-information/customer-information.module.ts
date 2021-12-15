@@ -6,13 +6,22 @@ import { CustomerInformationComponent } from './component/customer-information.c
 import { DetailsComponent } from './component/details/details.component';
 import { OrdersComponent } from './component/orders/orders.component';
 import { EditComponent } from './component/edit/edit.component';
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
-  declarations: [CustomerInformationComponent, DetailsComponent, OrdersComponent, EditComponent],
+  declarations: [
+    CustomerInformationComponent,
+    DetailsComponent,
+    OrdersComponent,
+    EditComponent,
+  ],
   imports: [
     CommonModule,
-    CustomerInformationRoutingModule
-  ]
+    CustomerInformationRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBywfU5m9EQIllxn61iVhTgG0MR3GKuGKo',
+      libraries: [],
+    }),
+  ],
 })
-export class CustomerInformationModule { }
+export class CustomerInformationModule {}
