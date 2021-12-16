@@ -7,6 +7,7 @@ import { DetailsComponent } from './component/details/details.component';
 import { OrdersComponent } from './component/orders/orders.component';
 import { EditComponent } from './component/edit/edit.component';
 import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AgmCoreModule } from '@agm/core';
     CommonModule,
     CustomerInformationRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBywfU5m9EQIllxn61iVhTgG0MR3GKuGKo',
+      apiKey: environment.apiKey,
       libraries: [],
     }),
   ],

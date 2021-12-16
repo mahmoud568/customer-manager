@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -26,9 +25,8 @@ export class DetailsComponent implements OnInit {
     // var longitude = faker.address.longitude();
     // console.log(latitude);
     // console.log(longitude);
-
-    this.http
-      .get('https://api.3geonames.org/?randomland=eg&json=1')
-      .subscribe((res) => console.log(res));
+    // this.http
+    //   .get('https://api.3geonames.org/?randomland=eg&json=1')
+    //   .subscribe((res) => console.log(res));
   }
 }
