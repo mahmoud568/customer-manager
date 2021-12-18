@@ -16,8 +16,12 @@
       }
     }
   }
-}
-
-agm-map {
-  height: 400px;
+  .map {
+    margin-left: 28px;
+    margin-top: 60px;
+    width: 100%;
+    agm-map {
+      height: 500px;
+    }
+  }
 }

@@ -16,9 +16,9 @@
             </div>
         </div>
     </div>
-    <div class="map">
+    <div id="map" class="map">
         <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="location.zoom">
-            <agm-marker [latitude]="location.latitude" [longitude]="location.longitude">
+            <agm-marker *ngFor="let marker of location.markers" [latitude]="marker.lat" [longitude]="marker.lng">
             </agm-marker>
         </agm-map>
     </div>
