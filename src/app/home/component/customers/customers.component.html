@@ -45,7 +45,8 @@
         <div class="row pl-3 my-1 sec-three">
             <div class="col-12">
                 <!-- <router-outlet></router-outlet> -->
-                <app-card-view *ngIf="selectedView === 'card'" [customers]="customers"></app-card-view>
+                <app-card-view *ngIf="selectedView === 'card'" [customers]="customers"
+                    (customerSelected)="customerSelected.emit($event)"></app-card-view>
                 <app-list-view *ngIf="selectedView === 'list'"></app-list-view>
                 <app-map-view *ngIf="selectedView === 'map'"></app-map-view>
                 <app-new-customer *ngIf="selectedView === 'addCustomer'"></app-new-customer>

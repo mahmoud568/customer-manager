@@ -1,22 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CardViewComponent } from './customers/component/card-view/card-view.component';
-import { CustomersComponent } from './customers/component/customers.component';
-import { ListViewComponent } from './customers/component/list-view/list-view.component';
-import { MapViewComponent } from './customers/component/map-view/map-view.component';
-import { NewCustomerComponent } from './customers/component/new-customer/new-customer.component';
+import { HomeComponent } from './home/component/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/Customers', pathMatch: 'full' },
-  { path: 'Customers', component: CustomersComponent },
-  {
-    path: 'customer-information/:id',
-    loadChildren: () =>
-      import('./customer-information/customer-information.module').then(
-        (m) => m.CustomerInformationModule
-      ),
-  },
+  { path: '', redirectTo: '/Home', pathMatch: 'full' },
+  { path: 'Home', component: HomeComponent },
   {
     path: 'Orders',
     loadChildren: () =>

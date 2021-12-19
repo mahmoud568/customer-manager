@@ -1,7 +1,7 @@
 <section>
     <div class="row">
         <div class="col-xl-3 col-md-4 col-sm-6 col-12" *ngFor="let customer of customers">
-            <mat-card class="card" [routerLink]="['/customer-information', customer.id]">
+            <mat-card class="card" (click)="customerSelected.emit(customer)">
                 <mat-card-header class="card-header">
                     <mat-card-title class="card-header-title">{{customer.name.firstName}} {{customer.name.lasttName}}
                     </mat-card-title>
