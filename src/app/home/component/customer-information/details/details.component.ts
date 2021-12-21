@@ -18,7 +18,7 @@ export class DetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
     this.route.snapshot.params.id;
     setTimeout(() => {
-      console.log(this.customer);
+      // console.log(this.customer);
       this.location = {
         latitude: this.customer.location.latitude,
         longitude: this.customer.location.longitude,
@@ -36,7 +36,8 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const faker = require('faker');
-    var createCard = faker.helpers.createCard();
+    // var createCard = faker.helpers.createCard();
+    var createCard = faker.commerce.productName();
     console.log(createCard);
   }
 }
