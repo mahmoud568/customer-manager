@@ -1,5 +1,5 @@
 <div *ngIf="home">
-    <app-customers [customers]="customers" (customerSelected)="customerSelected($event)"></app-customers>
+    <app-customers (customerSelected)="customerSelected($event)"></app-customers>
 </div>
 <div *ngIf="!home">
     <app-customer-information [customer]="selectedCustomer"></app-customer-information>

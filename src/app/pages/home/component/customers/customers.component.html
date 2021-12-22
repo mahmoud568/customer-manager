@@ -37,7 +37,7 @@
             <div class="Search col-md-5">
                 <div>
                     <div>Filter:</div>
-                    <input type="text">
+                    <input type="text" #myInput (keyup)="search(myInput.value)">
                 </div>
 
             </div>

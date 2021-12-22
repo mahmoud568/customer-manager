@@ -219,7 +219,7 @@ for (let i = 0; i < 10; i++) {
     id: i,
     name: {
       firstName: firstName(),
-      lasttName: lastName(),
+      lastName: lastName(),
     },
     gender: Math.floor(Math.random() * 10) <= 4 ? "female" : "male",
     address: {
