@@ -17,9 +17,9 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      console.log(this.customers);
-    }, 1000);
+    // setTimeout(() => {
+    //   console.log(this.customers);
+    // }, 1000);
   }
 
   getCustomers() {

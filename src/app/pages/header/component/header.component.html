@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse" id="navbar-list">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/Home">Customers</a>
+                <a class="nav-link" (click)="refresh('/Home')" routerLink="/Home">Customers</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="/Orders">Orders</a>

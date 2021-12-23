@@ -1,7 +1,11 @@
 .container-fluid {
   margin-left: -2rem;
+
   .information {
     display: flex;
+    @media screen and (max-width: 530px) {
+      display: block;
+    }
     .img {
       width: 10rem;
     }
@@ -11,6 +15,10 @@
       flex-direction: column;
       justify-content: space-between;
       font-weight: bold;
+      @media screen and (max-width: 530px) {
+        padding-top: 1rem;
+        padding-left: 1.5rem;
+      }
       .name {
         font-size: 1.2rem;
       }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from '../service/customers.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +8,10 @@ import { CustomersService } from '../service/customers.service';
 })
 export class HomeComponent implements OnInit {
   home: boolean = true;
-  customers: any;
   selectedCustomer: any;
-  constructor(private cutomerSevice: CustomersService) {
-    this.getCustomers();
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
-  getCustomers() {
-    this.cutomerSevice
-      .getCustomers()
-      .subscribe((res: any) => (this.customers = res.cutomers));
-  }
 
   customerSelected(event: any) {
     this.selectedCustomer = event;

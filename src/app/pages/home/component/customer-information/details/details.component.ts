@@ -35,9 +35,9 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const faker = require('faker');
-    // var createCard = faker.helpers.createCard();
-    var createCard = faker.commerce.productName();
-    console.log(createCard);
+    // const faker = require('faker');
+    // // var createCard = faker.helpers.createCard();
+    // var createCard = faker.commerce.productName();
+    // console.log(createCard);
   }
 }
