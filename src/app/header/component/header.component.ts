@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,11 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  activeRoute: boolean;
+  constructor(private location: Location) {
+    this.activeRoute = this.location.path().includes('/customer-information');
+    console.log(this.activeRoute);
+  }
 
   ngOnInit(): void {}
 
