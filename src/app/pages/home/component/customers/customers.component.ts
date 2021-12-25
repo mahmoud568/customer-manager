@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Console } from 'console';
+import { Customer } from 'src/app/shared/interfaces/customer';
 import { CustomersService } from '../../service/customers.service';
 
 @Component({
@@ -8,8 +8,10 @@ import { CustomersService } from '../../service/customers.service';
   styleUrls: ['./customers.component.scss'],
 })
 export class CustomersComponent implements OnInit {
-  customers: any;
+  customers!: Customer[];
   @Output() customerSelected = new EventEmitter();
+  @Output() customerDetailsView = new EventEmitter();
+
   selectedView: string = 'card';
   searchString = '';
   constructor(private cutomerSevice: CustomersService) {
@@ -17,9 +19,9 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   console.log(this.customers);
-    // }, 1000);
+    setTimeout(() => {
+      console.log(this.customers);
+    }, 1000);
   }
 
   getCustomers() {
@@ -38,7 +40,7 @@ export class CustomersComponent implements OnInit {
       .subscribe(
         (res: any) =>
           (this.customers = res.cutomers.filter(
-            (res: any) =>
+            (res: Customer) =>
               res.name.firstName.includes(event) ||
               res.name.lastName.includes(event)
           ))

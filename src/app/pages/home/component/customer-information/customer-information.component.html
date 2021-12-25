@@ -31,8 +31,8 @@
         <div class="row pt-5 sec-three">
             <div class="col-12">
                 <app-details *ngIf="selectedView === 'details'" [customer]="customer"></app-details>
-                <app-edit *ngIf="selectedView === 'orders'"></app-edit>
-                <app-orders *ngIf="selectedView === 'edit'"></app-orders>
+                <app-edit *ngIf="selectedView === 'orders'" [customer]="customer"></app-edit>
+                <app-orders *ngIf="selectedView === 'edit'" [customer]="customer"></app-orders>
             </div>
         </div>
     </div>

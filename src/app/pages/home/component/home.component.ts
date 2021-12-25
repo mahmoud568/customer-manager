@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Customer } from 'src/app/shared/interfaces/customer';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,13 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   home: boolean = true;
-  selectedCustomer: any;
+  selectedCustomer!: Customer;
+  customerDetailsView: string = '';
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
-  customerSelected(event: any) {
+  customerSelected(event: Customer) {
     this.selectedCustomer = event;
     this.home = false;
   }

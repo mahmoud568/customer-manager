@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Customer } from 'src/app/shared/interfaces/customer';
 
 @Component({
   selector: 'app-customer-information',
@@ -6,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./customer-information.component.scss'],
 })
 export class CustomerInformationComponent implements OnInit {
-  selectedView: string = 'details';
-  @Input() customer: any;
+  @Input() selectedView!: string;
+  @Input() customer!: Customer;
   constructor() {}
 
   ngOnInit(): void {}

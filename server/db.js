@@ -3,17 +3,17 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
+app.use(cors());
 const faker = require("faker");
 
 var firstName = faker.name.firstName;
 var lastName = faker.name.lastName;
 var randomEmail = faker.internet.email;
-var totalPayment = faker.datatype.float;
 
 var product = faker.commerce.product;
 var price = faker.commerce.price;
 
+// real location api
 // this.http
 //       .get('https://api.3geonames.org/?randomland=us&json=1')
 //       .subscribe((res) => {
@@ -231,27 +231,36 @@ for (let i = 0; i < 10; i++) {
       latitude: address.latt,
       longitude: address.longt,
     },
-    randomEmail: randomEmail(),
-    totalPayment: totalPayment(),
+    email: randomEmail(),
+    totalPayment: totalItemsPrice,
   });
 }
 
-app.use(cors());
+// get all customers
 app.get("/customers", function (req, res) {
   res.json({
     cutomers: cutomers,
   });
 });
 
+// get customer by id
 app.get("/customer-information", function (req, res) {
   res.json({
     customer: cutomers.find((x) => x.id === parseInt(req.query.userid)),
   });
 });
+
+// get all orders
 app.get("/orders", function (req, res) {
   res.json({
     orders: orders,
   });
 });
 
+// get orders by customer id
+app.get("/customer-orders", function (req, res) {
+  res.json({
+    orders: orders.find((x) => x.customerID === parseInt(req.query.userid)),
+  });
+});
 app.listen(3000);
