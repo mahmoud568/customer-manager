@@ -1,11 +1,14 @@
 <section>
     <div class="row">
         <div class="col-xl-3 col-md-4 col-sm-6 col-12" *ngFor="let customer of customers">
-            <mat-card class="card" (click)="customerSelected.emit(customer)">
+            <mat-card class="card" (click)="customerDetailsView.emit('details')"
+                (click)="customerSelected.emit(customer)">
                 <mat-card-header class="card-header">
-                    <mat-card-title class="card-header-title">{{customer.name.firstName}} {{customer.name.lasttName}}
+                    <mat-card-title class="card-header-title">{{customer.name.firstName}} {{customer.name.lastName}}
                     </mat-card-title>
-                    <button class="ml-auto " mat-icon-button (click)="$event.stopPropagation();">
+                    <button class="ml-auto " mat-icon-button
+                        (click)="customerDetailsView.emit('edit');$event.stopPropagation();"
+                        (click)="customerSelected.emit(customer)">
                         <mat-icon class="d-flex align-items-center"><img
                                 src="../../../../assets/pics/icons/icons8-edit-64-light.png" alt="edit">
                         </mat-icon>
@@ -20,7 +23,9 @@
                         <div class="row">
                             <p class="col-12 m-2 font-weight-bold">{{customer.address.state}},
                                 {{customer.address.cityName}}</p>
-                            <button class="ml-2" mat-button color="primary" (click)="$event.stopPropagation();">View
+                            <button class="ml-2" mat-button color="primary"
+                                (click)="customerDetailsView.emit('orders');$event.stopPropagation();"
+                                (click)="customerSelected.emit(customer)">View
                                 Orders</button>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 <section>
-    <div class="container-fuild px-5">
+    <div class="container-fuild">
         <div class="row">
             <div class="sec-one col-12">
                 <img class="customer-img" src="../../../assets/pics/icons/customer.png" alt="customer">
@@ -37,7 +37,7 @@
             <div class="Search col-md-5">
                 <div>
                     <div>Filter:</div>
-                    <input type="text">
+                    <input type="text" #myInput (keyup)="search(myInput.value)">
                 </div>
 
             </div>
@@ -46,9 +46,14 @@
             <div class="col-12">
                 <!-- <router-outlet></router-outlet> -->
                 <app-card-view *ngIf="selectedView === 'card'" [customers]="customers"
-                    (customerSelected)="customerSelected.emit($event)"></app-card-view>
-                <app-list-view *ngIf="selectedView === 'list'"></app-list-view>
-                <app-map-view *ngIf="selectedView === 'map'"></app-map-view>
+                    (customerSelected)="customerSelected.emit($event)"
+                    (customerDetailsView)="customerDetailsView.emit($event)"></app-card-view>
+                <app-list-view *ngIf="selectedView === 'list'" [customers]="customers"
+                    (customerSelected)="customerSelected.emit($event)"
+                    (customerDetailsView)="customerDetailsView.emit($event)"></app-list-view>
+                <app-map-view *ngIf="selectedView === 'map'" [customers]="customers"
+                    (customerSelected)="customerSelected.emit($event)"
+                    (customerDetailsView)="customerDetailsView.emit($event)"></app-map-view>
                 <app-new-customer *ngIf="selectedView === 'addCustomer'"></app-new-customer>
             </div>
         </div>

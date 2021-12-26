@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Customer } from 'src/app/shared/interfaces/customer';
 
 @Component({
   selector: 'app-card-view',
@@ -6,8 +7,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./card-view.component.scss'],
 })
 export class CardViewComponent implements OnInit {
-  @Input() customers: any;
+  @Input() customers!: Customer[];
   @Output() customerSelected = new EventEmitter();
+  @Output() customerDetailsView = new EventEmitter();
+
   constructor() {}
   ngOnInit(): void {}
 }

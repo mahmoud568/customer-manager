@@ -1,1 +1,8 @@
-<p>map-view works!</p>
+<div id="map" class="map py-3">
+    <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="location.zoom">
+        <agm-marker *ngFor="let customer of customers" [latitude]="customer.location.latitude"
+            [longitude]="customer.location.longitude" (markerClick)="customerDetailsView.emit('details')"
+            (markerClick)="customerSelected.emit(customer)">
+        </agm-marker>
+    </agm-map>
+</div>

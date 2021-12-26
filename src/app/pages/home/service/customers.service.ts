@@ -10,4 +10,10 @@ export class CustomersService {
   getCustomers() {
     return this.http.get('http://localhost:3000/customers');
   }
+
+  getCustomerOrdersByID(customerID: number) {
+    return this.http.get(
+      `http://localhost:3000/customer-orders?id=${customerID}`
+    );
+  }
 }

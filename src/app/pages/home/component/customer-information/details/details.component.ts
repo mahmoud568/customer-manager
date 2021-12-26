@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Customer } from 'src/app/shared/interfaces/customer';
 import { Location } from 'src/app/shared/interfaces/map';
 @Component({
   selector: 'app-details',
@@ -7,7 +8,7 @@ import { Location } from 'src/app/shared/interfaces/map';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  @Input() customer: any;
+  @Input() customer!: Customer;
   location: Location = {
     latitude: 33.57786,
     longitude: -101.85517,
@@ -35,9 +36,9 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const faker = require('faker');
-    // var createCard = faker.helpers.createCard();
-    var createCard = faker.commerce.productName();
-    console.log(createCard);
+    // const faker = require('faker');
+    // // var createCard = faker.helpers.createCard();
+    // var createCard = faker.commerce.productName();
+    // console.log(createCard);
   }
 }

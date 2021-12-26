@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from '../service/customers.service';
+import { Customer } from 'src/app/shared/interfaces/customer';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +8,13 @@ import { CustomersService } from '../service/customers.service';
 })
 export class HomeComponent implements OnInit {
   home: boolean = true;
-  customers: any;
-  selectedCustomer: any;
-  constructor(private cutomerSevice: CustomersService) {
-    this.getCustomers();
-  }
+  selectedCustomer!: Customer;
+  customerDetailsView: string = '';
+  constructor() {}
 
   ngOnInit(): void {}
-  getCustomers() {
-    this.cutomerSevice
-      .getCustomers()
-      .subscribe((res: any) => (this.customers = res.cutomers));
-  }
 
-  customerSelected(event: any) {
+  customerSelected(event: Customer) {
     this.selectedCustomer = event;
     this.home = false;
   }
