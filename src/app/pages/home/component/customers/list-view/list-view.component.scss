@@ -1,0 +1,32 @@
+.contianer-fluid {
+  tr {
+    @media screen and (max-width: 700px) {
+      border-top: 2px solid black;
+    }
+    th {
+      @media screen and (max-width: 700px) {
+        display: none;
+      }
+      font-size: 1rem;
+      font-weight: bolder;
+    }
+    td {
+      @media screen and (max-width: 700px) {
+        display: block;
+      }
+      font-size: 0.9rem;
+      font-weight: bold;
+      opacity: 0.9;
+      cursor: pointer;
+      img {
+        width: 4rem;
+      }
+      .mobile-view-header {
+        opacity: 0.6;
+        @media screen and (min-width: 700px) {
+          display: none;
+        }
+      }
+    }
+  }
+}

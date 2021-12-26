@@ -1,1 +1,25 @@
-<p>orders works!</p>
+<section>
+    <div class="container-fluid">
+        <div *ngIf="orders">
+            <div class="header">
+                Oders for {{customer.name.firstName}} {{customer.name.lastName}}
+            </div>
+            <table class="table table-striped">
+
+                <tbody class="body">
+                    <tr class="d-flex justify-content-between" *ngFor="let item of orders.items">
+                        <div>{{item.itemName}}</div>
+                        <div>{{item.itemOrderedQuantity}} * {{item.itemPrice}}$</div>
+                    </tr>
+                    <tr class="total d-flex justify-content-end">
+                        {{this.orders.total}}$
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="header" *ngIf="!orders">{{customer.name.firstName}} {{customer.name.lastName}} has no
+            orders
+        </div>
+    </div>
+
+</section>

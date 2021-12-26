@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Customer } from 'src/app/shared/interfaces/customer';
 
 @Component({
@@ -11,7 +10,7 @@ export class HomeComponent implements OnInit {
   home: boolean = true;
   selectedCustomer!: Customer;
   customerDetailsView: string = '';
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
