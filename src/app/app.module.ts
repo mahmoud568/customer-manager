@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material.module';
 import { AgmCoreModule } from '@agm/core';
@@ -21,6 +22,7 @@ import { CustomerInformationComponent } from './pages/home/component/customer-in
 import { DetailsComponent } from './pages/home/component/customer-information/details/details.component';
 import { OrdersComponent } from './pages/home/component/customer-information/orders/orders.component';
 import { EditComponent } from './pages/home/component/customer-information/edit/edit.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +38,13 @@ import { EditComponent } from './pages/home/component/customer-information/edit/
     DetailsComponent,
     OrdersComponent,
     EditComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     AgmCoreModule.forRoot({

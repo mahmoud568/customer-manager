@@ -16,6 +16,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   exports: [
@@ -35,7 +37,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatTableModule,
     MatToolbarModule,
     MatButtonToggleModule,
-    MatDialogModule
-  ]
+    MatDialogModule,
+    MatRadioModule,
+    MatProgressSpinnerModule,
+  ],
 })
 export class MaterialModule {}

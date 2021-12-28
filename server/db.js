@@ -4,6 +4,11 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 app.use(cors());
+
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const faker = require("faker");
 
 var firstName = faker.name.firstName;
@@ -25,7 +30,7 @@ var price = faker.commerce.price;
 var addresses = require("./addresses");
 var addressArray = addresses.addresses;
 
-let cutomers = [];
+let customers = [];
 let orders = [];
 var items = [];
 for (let i = 0; i < 10; i++) {
@@ -54,7 +59,7 @@ for (let i = 0; i < 10; i++) {
   }
   // create users data with random real address
   address = addressArray[parseInt(Math.random() * 28)];
-  cutomers.push({
+  customers.push({
     id: i,
     name: {
       firstName: firstName(),
@@ -78,14 +83,14 @@ for (let i = 0; i < 10; i++) {
 // get all customers
 app.get("/customers", function (req, res) {
   res.json({
-    cutomers: cutomers,
+    customers: customers,
   });
 });
 
 // get customer by id
 app.get("/customer-information", function (req, res) {
   res.json({
-    customer: cutomers.find((x) => x.id === parseInt(req.query.id)),
+    customer: customers.find((x) => x.id === parseInt(req.query.id)),
   });
 });
 
@@ -102,4 +107,23 @@ app.get("/customer-orders", function (req, res) {
     orders: orders.find((x) => x.customerID === parseInt(req.query.id)),
   });
 });
+
+// edit customer by id
+app.post("/edit-customer", function (req, res) {
+  var id = parseInt(req.query.id);
+  var editedCustomer = JSON.parse(req.body.customer);
+  // loop in customers array untel we find the matches customer then change it value by sended body
+  for (let i = 0; i < customers.length; i++) {
+    if (customers[i].id === id) {
+      customers[i] = editedCustomer;
+      return res.json({
+        status: "success",
+      });
+    }
+  }
+  return res.json({
+    status: "error: didn't find this customer",
+  });
+});
+
 app.listen(3000);

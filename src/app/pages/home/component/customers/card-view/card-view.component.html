@@ -1,5 +1,5 @@
 <section>
-    <div class="row">
+    <div class="row" *ngIf="customers">
         <div class="col-xl-3 col-md-4 col-sm-6 col-12" *ngFor="let customer of customers">
             <mat-card class="card" (click)="customerDetailsView.emit('details')"
                 (click)="customerSelected.emit(customer)">

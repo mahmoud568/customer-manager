@@ -11,10 +11,11 @@ export class CustomersComponent implements OnInit {
   customers!: Customer[];
   @Output() customerSelected = new EventEmitter();
   @Output() customerDetailsView = new EventEmitter();
+  isLoading: boolean = false;
 
   selectedView: string = 'card';
   searchString = '';
-  constructor(private cutomerSevice: CustomersService) {
+  constructor(private customersevice: CustomersService) {
     this.getCustomers();
   }
 
@@ -25,9 +26,11 @@ export class CustomersComponent implements OnInit {
   }
 
   getCustomers() {
-    this.cutomerSevice
-      .getCustomers()
-      .subscribe((res: any) => (this.customers = res.cutomers));
+    this.isLoading = true;
+    this.customersevice.getCustomers().subscribe((res: any) => {
+      this.isLoading = false;
+      this.customers = res.customers;
+    });
   }
 
   selectView(view: string) {
@@ -35,15 +38,14 @@ export class CustomersComponent implements OnInit {
   }
 
   search(event: string) {
-    this.cutomerSevice
-      .getCustomers()
-      .subscribe(
-        (res: any) =>
-          (this.customers = res.cutomers.filter(
-            (res: Customer) =>
-              res.name.firstName.includes(event) ||
-              res.name.lastName.includes(event)
-          ))
+    this.isLoading = true;
+    this.customersevice.getCustomers().subscribe((res: any) => {
+      this.isLoading = false;
+      this.customers = res.customers.filter(
+        (res: Customer) =>
+          res.name.firstName.includes(event) ||
+          res.name.lastName.includes(event)
       );
+    });
   }
 }

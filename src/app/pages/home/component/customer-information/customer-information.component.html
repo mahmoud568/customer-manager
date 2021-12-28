@@ -32,7 +32,8 @@
             <div class="col-12">
                 <app-details *ngIf="selectedView === 'details'" [customer]="customer"></app-details>
                 <app-orders *ngIf="selectedView ===  'orders'" [customer]="customer"></app-orders>
-                <app-edit *ngIf="selectedView === 'edit'" [customer]="customer"></app-edit>
+                <app-edit *ngIf="selectedView === 'edit'" [customer]="customer"
+                    (CancelEditing)="selectedView = 'details'"></app-edit>
             </div>
         </div>
     </div>

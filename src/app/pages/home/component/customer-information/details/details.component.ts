@@ -12,7 +12,7 @@ export class DetailsComponent implements OnInit {
   location: Location = {
     latitude: 33.57786,
     longitude: -101.85517,
-    zoom: 4,
+    zoom: 3,
     isFullScreen: true,
   };
 
@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
       this.location = {
         latitude: this.customer.location.latitude,
         longitude: this.customer.location.longitude,
-        zoom: 4,
+        zoom: 3,
         isFullScreen: true,
         markers: [
           {

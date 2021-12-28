@@ -14,13 +14,10 @@ export class MapViewComponent implements OnInit {
   location: Location = {
     latitude: 33.57786,
     longitude: -101.85517,
-    zoom: 4,
+    zoom: 3,
     isFullScreen: true,
   };
   constructor() {}
 
   ngOnInit(): void {}
-  markerClicked(event: any) {
-    console.log(event);
-  }
 }
