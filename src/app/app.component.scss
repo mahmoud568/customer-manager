@@ -2,8 +2,20 @@
   font-family: "Cairo", sans-serif;
   box-sizing: border-box;
 }
+.page {
+  min-height: 100%;
+  .container-fluid {
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
 
-.container-fluid {
-  padding-top: 1rem;
-  padding-left: 1rem;
+  footer {
+    height: 3rem;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
 }

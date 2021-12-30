@@ -34,7 +34,7 @@
                     </a>
                 </div>
             </nav>
-            <div class="Search col-md-5">
+            <div class="Search col-md-5" *ngIf="!(selectedView === 'addCustomer')">
                 <div>
                     <div>Filter:</div>
                     <input type="text" #myInput (keyup)="search(myInput.value)">
@@ -42,7 +42,7 @@
 
             </div>
         </div>
-        <div class="row pl-3 my-1 sec-three">
+        <div class="row pl-3 my-1 sec-three" *ngIf="isCustomers">
             <div class="col-12">
                 <!-- <router-outlet></router-outlet> -->
                 <app-card-view *ngIf="selectedView === 'card'" [customers]="customers"
@@ -54,9 +54,16 @@
                 <app-map-view *ngIf="selectedView === 'map'" [customers]="customers"
                     (customerSelected)="customerSelected.emit($event)"
                     (customerDetailsView)="customerDetailsView.emit($event)"></app-map-view>
-                <app-new-customer *ngIf="selectedView === 'addCustomer'"></app-new-customer>
+                <!-- <app-new-customer *ngIf="selectedView === 'addCustomer'"></app-new-customer> -->
             </div>
         </div>
+        <!-- make new design validation on addCustomerView for better user experince -->
+        <div class="row pl-3 my-5 sec-three" *ngIf="selectedView === 'addCustomer'">
+            <div class="col-12">
+                <app-new-customer></app-new-customer>
+            </div>
+        </div>
+        <div class="empty" *ngIf="!isCustomers && !(selectedView === 'addCustomer')">there is no customers to view</div>
     </div>
 </section>
 

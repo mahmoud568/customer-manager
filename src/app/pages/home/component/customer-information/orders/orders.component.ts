@@ -11,25 +11,21 @@ import { CustomersService } from '../../../service/customers.service';
 export class OrdersComponent implements OnInit {
   @Input() customer!: Customer;
   orders!: Order;
+  isLoading!: boolean;
+  customerFullName!: string;
 
-  constructor(private curtomersService: CustomersService) {
-    // setTimeout(() => {
-    //   this.curtomersService
-    //     .getCustomerOrdersByID(this.customer.id)
-    //     .subscribe((res) => console.log(res));
-    // }, 0);
-  }
+  constructor(private curtomersService: CustomersService) {}
 
   ngOnInit(): void {
     this.getCustomerOrdersByID(this.customer.id);
-    setTimeout(() => {
-      console.log(this.orders);
-    }, 0);
   }
 
   getCustomerOrdersByID(id: number) {
-    this.curtomersService
-      .getCustomerOrdersByID(id)
-      .subscribe((res: any) => (this.orders = res.orders));
+    this.isLoading = true;
+    this.customerFullName = `${this.customer.name.firstName} ${this.customer.name.lastName}`;
+    this.curtomersService.getCustomerOrdersByID(id).subscribe((res: any) => {
+      this.isLoading = false;
+      this.orders = res.orders;
+    });
   }
 }

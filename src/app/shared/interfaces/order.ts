@@ -1,5 +1,6 @@
 export interface Order {
   customerID: number;
+  cutomerFullName?: string;
   items: Item[];
   shipmentID: number;
   total: number;

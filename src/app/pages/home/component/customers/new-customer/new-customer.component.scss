@@ -1,3 +1,13 @@
 .form-group {
   max-width: 30rem;
 }
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+  border-left: 5px solid red;
+}
+input.ng-valid.ng-touched {
+  border-left: 5px solid green;
+}
+.errorspan {
+  color: red;
+}

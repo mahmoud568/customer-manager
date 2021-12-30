@@ -13,7 +13,5 @@ export class ListViewComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.customers);
-  }
+  ngOnInit(): void {}
 }

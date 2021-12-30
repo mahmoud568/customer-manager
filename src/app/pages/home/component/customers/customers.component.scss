@@ -23,12 +23,13 @@
         display: flex;
         flex-basis: 25%;
         opacity: 0.5;
-        @media only screen and (max-width: 800px) and (min-width: 768px) {
+        @media only screen and (max-width: 890px) and (min-width: 768px) {
           flex-basis: 50%;
+          padding-bottom: 1rem;
         }
         @media only screen and (max-width: 600px) {
           flex-basis: 100%;
-          line-height: 2rem;
+          padding-bottom: 1rem;
         }
         a {
           text-decoration: none;
@@ -41,9 +42,11 @@
           width: 1.2rem;
           height: 1.2rem;
           margin-right: 5px;
-          span {
-            padding-left: 0.4rem;
-          }
+        }
+        span {
+          padding-left: 0.1rem;
+          font-size: 1rem;
+          font-weight: bold;
         }
       }
       .active {
@@ -59,5 +62,10 @@
         margin-left: -1.3rem;
       }
     }
+  }
+  .empty {
+    font-size: 2rem;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
   }
 }

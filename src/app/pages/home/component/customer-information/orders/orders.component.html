@@ -1,8 +1,8 @@
 <section>
-    <div class="container-fluid">
+    <div class="container-fluid" *ngIf="!isLoading">
         <div *ngIf="orders">
             <div class="header">
-                Oders for {{customer.name.firstName}} {{customer.name.lastName}}
+                <span> Oders for </span> <span>{{customerFullName}}</span>
             </div>
             <table class="table table-striped">
 
@@ -17,9 +17,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="header" *ngIf="!orders">{{customer.name.firstName}} {{customer.name.lastName}} has no
-            orders
+        <div class="header" *ngIf="!orders"> <span>{{customerFullName}}</span> <span> has no
+                orders</span>
         </div>
     </div>
-
+    <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
 </section>

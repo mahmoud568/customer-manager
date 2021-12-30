@@ -1,29 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from 'src/app/shared/interfaces/customer';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomersService {
-  constructor(private http: HttpClient) {}
+  BASE_URL!: string;
+  constructor(private http: HttpClient, private sharedService: SharedService) {
+    this.BASE_URL = sharedService.getBaseUrl();
+  }
 
   getCustomers() {
-    return this.http.get('http://localhost:3000/customers');
+    return this.http.get(`${this.BASE_URL}customers`);
   }
 
   getCustomerOrdersByID(customerID: number) {
-    return this.http.get(
-      `http://localhost:3000/customer-orders?id=${customerID}`
-    );
+    return this.http.get(`${this.BASE_URL}customer-orders?id=${customerID}`);
   }
 
   editCutomerByID(customerID: number, editedCustomer: Customer) {
-    return this.http.post(
-      `http://localhost:3000/edit-customer?id=${customerID}`,
-      {
-        customer: JSON.stringify(editedCustomer),
-      }
-    );
+    return this.http.post(`${this.BASE_URL}edit-customer?id=${customerID}`, {
+      customer: JSON.stringify(editedCustomer),
+    });
+  }
+
+  deleteCutomerByID(customerID: number) {
+    return this.http.delete(`${this.BASE_URL}delete-customer?id=${customerID}`);
+  }
+
+  addCustomer(editedCustomer: Customer) {
+    return this.http.post(`${this.BASE_URL}add-customer`, {
+      customer: JSON.stringify(editedCustomer),
+    });
   }
 }

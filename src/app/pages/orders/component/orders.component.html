@@ -1,1 +1,36 @@
-<p>orders works!</p>
+<section>
+    <div class="container-fluid py-3" *ngIf="!isLoading">
+        <div class="row">
+            <div class="col-12 page-header">
+                <img class="customer-img" src="../../../assets/pics/icons/icons8-delivery-box-64.png"
+                    alt="delivery-box">
+                <span class="customer-text">Customers Orders</span>
+            </div>
+        </div>
+        <div *ngIf="orders" class="orders px-4">
+            <div *ngFor="let order of orders">
+                <div class="header">
+                    <span> Oders for </span> <span>{{order.cutomerFullName}}</span>
+                </div>
+                <table class="table table-striped">
+                    <tbody class="body">
+                        <tr class="d-flex justify-content-between" *ngFor="let item of order.items">
+                            <div>{{item.itemName}}</div>
+                            <div>{{item.itemOrderedQuantity}} * {{item.itemPrice}}$</div>
+                        </tr>
+                        <tr class="total d-flex justify-content-end">
+                            {{this.order.total}}$
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div *ngIf="!orders" class="header">there is no orders to view</div>
+    </div>
+
+</section>
+
+
+<div *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>

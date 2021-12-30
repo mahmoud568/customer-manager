@@ -1,0 +1,38 @@
+.container-fluid {
+  .page-header {
+    margin-bottom: 3rem;
+    .customer-text {
+      font-size: 2rem;
+      @media screen and (max-width: 400px) {
+        display: flex;
+        flex-direction: column;
+        line-height: 2rem;
+      }
+    }
+  }
+  .header {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+    @media screen and (max-width: 400px) {
+      display: flex;
+      flex-direction: column;
+      line-height: 2rem;
+    }
+  }
+  .orders {
+    .body {
+      margin-top: 5rem;
+      tr {
+        font-size: 1rem;
+        font-weight: bolder;
+        line-height: 2.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        &.total {
+          border-top: 3px solid black;
+        }
+      }
+    }
+  }
+}

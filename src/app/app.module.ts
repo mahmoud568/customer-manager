@@ -22,7 +22,10 @@ import { CustomerInformationComponent } from './pages/home/component/customer-in
 import { DetailsComponent } from './pages/home/component/customer-information/details/details.component';
 import { OrdersComponent } from './pages/home/component/customer-information/orders/orders.component';
 import { EditComponent } from './pages/home/component/customer-information/edit/edit.component';
-import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+// import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,7 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loa
     DetailsComponent,
     OrdersComponent,
     EditComponent,
-    LoadingSpinnerComponent,
+    // LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,9 +50,15 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loa
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    SharedModule,
     AgmCoreModule.forRoot({
       apiKey: environment.apiKey,
       libraries: [],
+    }),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      // positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
     }),
   ],
   providers: [],

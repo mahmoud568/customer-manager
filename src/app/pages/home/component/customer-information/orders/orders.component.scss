@@ -3,6 +3,11 @@
     font-size: 1.5rem;
     font-weight: bolder;
     margin-bottom: 2rem;
+    @media screen and (max-width: 400px) {
+      display: flex;
+      flex-direction: column;
+      line-height: 2rem;
+    }
   }
   .body {
     margin-top: 5rem;

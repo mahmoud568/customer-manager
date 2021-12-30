@@ -11,7 +11,8 @@ export class CustomersComponent implements OnInit {
   customers!: Customer[];
   @Output() customerSelected = new EventEmitter();
   @Output() customerDetailsView = new EventEmitter();
-  isLoading: boolean = false;
+  isCustomers!: boolean;
+  isLoading!: boolean;
 
   selectedView: string = 'card';
   searchString = '';
@@ -27,13 +28,18 @@ export class CustomersComponent implements OnInit {
 
   getCustomers() {
     this.isLoading = true;
+    this.isCustomers = false;
     this.customersevice.getCustomers().subscribe((res: any) => {
       this.isLoading = false;
+      this.isCustomers = true;
       this.customers = res.customers;
     });
   }
 
   selectView(view: string) {
+    // if we are comeing from new customer tap recall the data
+    if (!(view === 'addCustomer') && this.selectedView === 'addCustomer')
+      this.getCustomers();
     this.selectedView = view;
   }
 
@@ -46,6 +52,11 @@ export class CustomersComponent implements OnInit {
           res.name.firstName.includes(event) ||
           res.name.lastName.includes(event)
       );
+      if (this.customers.length > 0) {
+        this.isCustomers = true;
+      } else {
+        this.isCustomers = false;
+      }
     });
   }
 }

@@ -1,42 +1,64 @@
 <section>
-    <div class="container-fluid">
+    <div class="container-fluid" *ngIf="!isLoading">
         <form (ngSubmit)="onAddNewCustomer(f)" #f="ngForm">
             <div class="form-group d-flex flex-column">
                 <label for="firstName">First Name</label>
-                <input type="text" id="firstName" class="form-control" ngModel name="firstName">
+
+                <input type="text" id="firstName" class="form-control" ngModel name="firstName" required
+                    #firstName="ngModel">
+                <span class="errorspan" *ngIf="!firstName.valid && firstName.touched">please enter a valid
+                    first name</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" class="form-control" ngModel name="lastName">
+                <input type="text" id="lastName" class="form-control" ngModel name="lastName" required
+                    #lastName="ngModel">
+                <span class="errorspan" *ngIf="!lastName.valid && lastName.touched">please enter a valid
+                    last name</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="gender">Gender</label>
-                <mat-radio-group type="text" id="gender" ngModel name="gender" aria-label="Select an option">
+                <mat-radio-group type="text" id="gender" ngModel name="gender" aria-label="Select an option" required
+                    #gender="ngModel">
                     <mat-radio-button value="1">male</mat-radio-button>
                     <mat-radio-button class="px-2" value="2">female</mat-radio-button>
                 </mat-radio-group>
+                <span class="errorspan" *ngIf="!gender.touched">please select gender</span>
             </div>
             <div class="form-group d-flex  flex-column">
                 <label for="email">Email</label>
-                <input type="email" id="email" class="form-control" ngModel name="email">
+                <input type="email" id="email" class="form-control" ngModel name="email" required email
+                    #email="ngModel">
+                <span class="errorspan" *ngIf="!email.valid && email.touched">please enter a valid
+                    email</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="address">Address</label>
-                <input type="text" id="address" class="form-control" ngModel name="address">
+                <input type="text" id="address" class="form-control" ngModel name="address" required #address="ngModel">
+                <span class="errorspan" *ngIf="!address.valid && address.touched">please enter a valid
+                    streat address</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="city">City</label>
-                <input type="text" id="city" class="form-control" ngModel name="city">
+                <input type="text" id="city" class="form-control" ngModel name="city" required #city="ngModel">
+                <span class="errorspan" *ngIf="!city.valid && city.touched">please enter a valid
+                    city name</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="state">State</label>
-                <input type="text" id="state" class="form-control" ngModel name="state">
+                <input type="text" id="state" class="form-control" ngModel name="state" required #state="ngModel">
+                <span class="errorspan" *ngIf="!state.valid && state.touched">please enter a valid
+                    state name</span>
             </div>
             <div class="form-group d-flex">
-                <button type="button" class="btn btn-outline-dark mr-auto" (click)="onCancel()">Cancel</button>
-                <button type="submit" class="btn btn-success ">Add Customer</button>
+                <button type="button" class="btn btn-outline-dark mr-auto"
+                    (click)="CancelEditing.emit()">Cancel</button>
+                <button type="submit" class="btn btn-success" [disabled]="f.invalid">Add Customer</button>
             </div>
 
         </form>
     </div>
 </section>
+<div *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>

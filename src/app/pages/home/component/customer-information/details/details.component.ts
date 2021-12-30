@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/shared/interfaces/customer';
 import { Location } from 'src/app/shared/interfaces/map';
 @Component({
@@ -16,10 +15,8 @@ export class DetailsComponent implements OnInit {
     isFullScreen: true,
   };
 
-  constructor(private route: ActivatedRoute) {
-    this.route.snapshot.params.id;
+  constructor() {
     setTimeout(() => {
-      // console.log(this.customer);
       this.location = {
         latitude: this.customer.location.latitude,
         longitude: this.customer.location.longitude,
@@ -35,10 +32,5 @@ export class DetailsComponent implements OnInit {
     }, 0);
   }
 
-  ngOnInit(): void {
-    // const faker = require('faker');
-    // // var createCard = faker.helpers.createCard();
-    // var createCard = faker.commerce.productName();
-    // console.log(createCard);
-  }
+  ngOnInit(): void {}
 }

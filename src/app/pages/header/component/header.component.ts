@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router, private loction: Location) {}
+  constructor(
+    private loction: Location,
+    private sharedService: SharedService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -23,16 +26,15 @@ export class HeaderComponent implements OnInit {
       document.getElementById('mySidenav')!.style.width = '0';
     }
   }
-  redirectTo(uri: string) {
-    this.router
-      .navigateByUrl('/Orders', { skipLocationChange: true })
-      .then(() => this.router.navigate([uri]));
-  }
 
+  redirectTo(uri: string) {
+    this.sharedService.redirectTo(uri);
+  }
   // refresh if user click on current route
-  // move to any route and move back in same time to refresh
+  // move to fake empty route and move back in same time to refresh
+  // created for the routes that calls data from backend
   refresh(uri: string) {
     const activeRoute = decodeURI(this.loction.path());
-    if (activeRoute === uri) this.redirectTo('/Home');
+    if (activeRoute === uri) this.redirectTo(uri);
   }
 }

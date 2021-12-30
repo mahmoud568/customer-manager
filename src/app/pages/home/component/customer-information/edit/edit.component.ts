@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Customer } from 'src/app/shared/interfaces/customer';
+import { SharedService } from 'src/app/shared/services/shared.service';
 import { CustomersService } from '../../../service/customers.service';
 
 @Component({
@@ -12,12 +13,12 @@ import { CustomersService } from '../../../service/customers.service';
 export class EditComponent implements OnInit {
   @Input() customer!: Customer;
   @Output() CancelEditing = new EventEmitter();
-  response!: string;
-  isLoading: boolean = false;
+  isLoading!: boolean;
 
   constructor(
-    private http: HttpClient,
-    private customersService: CustomersService
+    private customersService: CustomersService,
+    private toastr: ToastrService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {}
@@ -25,7 +26,6 @@ export class EditComponent implements OnInit {
   onUpdate(f: NgForm) {
     this.isLoading = true;
     let editedCustomer = this.customer;
-
     if (
       editedCustomer.address.streetAddress == f.value.address &&
       editedCustomer.address.cityName == f.value.city &&
@@ -36,9 +36,12 @@ export class EditComponent implements OnInit {
       editedCustomer.gender == (f.value.gender == 1 ? 'male' : 'female')
     ) {
       this.isLoading = false;
-      return console.log('u need to do changes to submit');
+      this.toastr.error(
+        'you need to change customer data to submit!',
+        'warning!'
+      );
+      return;
     } else {
-      console.log(f);
       editedCustomer.address.streetAddress = f.value.address;
       editedCustomer.address.cityName = f.value.city;
       editedCustomer.address.state = f.value.state;
@@ -50,14 +53,24 @@ export class EditComponent implements OnInit {
         .editCutomerByID(editedCustomer.id, editedCustomer)
         .subscribe((res: any) => {
           this.isLoading = false;
-          this.response = res.status;
-          console.log(this.response);
+          if (res.status === 'success') {
+            this.toastr.success(res.details, res.status);
+            this.CancelEditing.emit();
+          }
         });
-      // this.CancelEditing.emit();
     }
   }
 
   onDelete() {
-    console.log('delete');
+    this.customersService
+      .deleteCutomerByID(this.customer.id)
+      .subscribe((res: any) => {
+        this.toastr.success(res.details, res.status);
+        this.redirectTo('/Home');
+      });
+  }
+
+  redirectTo(uri: string) {
+    this.sharedService.redirectTo(uri);
   }
 }

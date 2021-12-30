@@ -34,10 +34,14 @@ let customers = [];
 let orders = [];
 var items = [];
 for (let i = 0; i < 10; i++) {
+  let customerFirstName = firstName();
+  let customeLastName = lastName();
   // create orders
   let totalorderPrice = 0;
   items = [];
   for (let j = 1; j < parseInt(Math.random() * 10); j++) {
+    // data that i would use more than once so i would randmize it here so i can app data make sense
+
     var fakePrice = price();
     var itemOrderedQuantity = parseInt(Math.random() * 6) + 1;
     var totalItemPrice = itemOrderedQuantity * Math.floor(fakePrice);
@@ -52,6 +56,7 @@ for (let i = 0; i < 10; i++) {
   if (items.length > 0) {
     orders.push({
       customerID: i,
+      cutomerFullName: `${customerFirstName} ${customeLastName}`,
       shipmentID: Math.floor(Math.random() * 500),
       items: items,
       total: totalorderPrice,
@@ -62,8 +67,8 @@ for (let i = 0; i < 10; i++) {
   customers.push({
     id: i,
     name: {
-      firstName: firstName(),
-      lastName: lastName(),
+      firstName: customerFirstName,
+      lastName: customeLastName,
     },
     gender: Math.floor(Math.random() * 10) <= 4 ? "female" : "male",
     address: {
@@ -103,9 +108,18 @@ app.get("/orders", function (req, res) {
 
 // get orders by customer id
 app.get("/customer-orders", function (req, res) {
-  res.json({
-    orders: orders.find((x) => x.customerID === parseInt(req.query.id)),
-  });
+  if (orders.find((x) => x.customerID === parseInt(req.query.id))) {
+    res.json({
+      orders: orders.find((x) => x.customerID === parseInt(req.query.id)),
+      status: "success",
+      details: "customer orders has been found",
+    });
+  } else {
+    res.json({
+      status: "erorr",
+      details: "customer orders has been not found",
+    });
+  }
 });
 
 // edit customer by id
@@ -118,12 +132,48 @@ app.post("/edit-customer", function (req, res) {
       customers[i] = editedCustomer;
       return res.json({
         status: "success",
+        details: "customer has been deleted succefully",
       });
     }
   }
   return res.json({
-    status: "error: didn't find this customer",
+    status: "error",
+    details: "didn't find this customer",
   });
+});
+
+app.delete("/delete-customer", function (req, res) {
+  var id = parseInt(req.query.id);
+  // loop in customers array untel we find the matches customer then change it value by sended body
+  for (let i = 0; i < customers.length; i++) {
+    if (customers[i].id === id) {
+      customers.splice([i], 1);
+      return res.json({
+        status: "success",
+        details: "customer has been updated succefully",
+      });
+    }
+  }
+  return res.json({
+    status: "error",
+    details: "didn't find this customer",
+  });
+});
+
+// edit customer by id
+app.post("/add-customer", function (req, res) {
+  var newCustomer = JSON.parse(req.body.customer);
+  newCustomer.id = customers.length;
+  customers.push(newCustomer);
+  res.json({
+    status: "success",
+    newCustomer: newCustomer,
+  });
+  // customers.push(newCustomer);
+  // return res.json({
+  //   status: "success",
+  //   details: "customer has been deleted succefully",
+  // });
 });
 
 app.listen(3000);

@@ -3,14 +3,18 @@
         <form (ngSubmit)="onUpdate(f)" #f="ngForm">
             <div class="form-group d-flex flex-column">
                 <label for="firstName">First Name</label>
+
                 <input type="text" id="firstName" class="form-control" ngModel="{{customer.name.firstName}}"
                     name="firstName" required #firstName="ngModel">
-                <!-- <span class="errorspan" *ngIf="!firstName.valid && firstName.touched">formError</span> -->
+                <span class="errorspan" *ngIf="!firstName.valid && firstName.touched">please enter a valid
+                    first name</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="lastName">Last Name</label>
                 <input type="text" id="lastName" class="form-control" ngModel="{{customer.name.lastName}}"
                     name="lastName" required #lastName="ngModel">
+                <span class="errorspan" *ngIf="!lastName.valid && lastName.touched">please enter a valid
+                    last name</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="gender">Gender</label>
@@ -24,27 +28,34 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" class="form-control" ngModel="{{customer.email}}" name="email" required
                     email #email="ngModel">
+                <span class="errorspan" *ngIf="!email.valid && email.touched">please enter a valid
+                    email</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="address">Address</label>
                 <input type="text" id="address" class="form-control" ngModel="{{customer.address.streetAddress}}"
                     name="address" required #address="ngModel">
+                <span class="errorspan" *ngIf="!address.valid && address.touched">please enter a valid
+                    streat address</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="city">City</label>
                 <input type="text" id="city" class="form-control" ngModel="{{customer.address.cityName}}" name="city"
                     required #city="ngModel">
+                <span class="errorspan" *ngIf="!city.valid && city.touched">please enter a valid
+                    city name</span>
             </div>
             <div class="form-group d-flex flex-column">
                 <label for="state">State</label>
                 <input type="text" id="state" class="form-control" ngModel="{{customer.address.state}}" name="state"
                     required #state="ngModel">
+                <span class="errorspan" *ngIf="!state.valid && state.touched">please enter a valid
+                    state name</span>
             </div>
             <div class="form-group d-flex">
                 <button type="button" class="btn btn-danger mr-auto" (click)="onDelete()">Delete</button>
                 <button type="button" class="btn btn-outline-dark mr-2" (click)="CancelEditing.emit()">Cancel</button>
-                <!-- make update btn only valid if change value and valid data  -->
-                <button type="submit" class="btn btn-success" [disabled]="f.invalid || !f.dirty">Update</button>
+                <button type="submit" class="btn btn-success" [disabled]="f.invalid">Update</button>
             </div>
 
         </form>
