@@ -14,8 +14,10 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 100%;
     display: flex;
     align-items: center;
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
   }
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AgmMap } from '@agm/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Customer } from 'src/app/shared/interfaces/customer';
 import { Location } from 'src/app/shared/interfaces/map';
 @Component({
@@ -8,6 +9,8 @@ import { Location } from 'src/app/shared/interfaces/map';
 })
 export class DetailsComponent implements OnInit {
   @Input() customer!: Customer;
+  @ViewChild('map', { static: false }) myMap!: AgmMap;
+
   location: Location = {
     latitude: 33.57786,
     longitude: -101.85517,
@@ -29,6 +32,11 @@ export class DetailsComponent implements OnInit {
           },
         ],
       };
+      this.myMap.latitude = Number(this.location.latitude);
+      this.myMap.longitude = Number(this.location.longitude);
+      this.location.zoom = 8;
+      //@ts-ignore
+      this.myMap._setCenter();
     }, 0);
   }
 

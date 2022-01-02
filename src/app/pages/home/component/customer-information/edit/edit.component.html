@@ -1,4 +1,4 @@
-<section>
+<section class="section">
     <div class="container-fluid" *ngIf="customer && !isLoading">
         <form (ngSubmit)="onUpdate(f)" #f="ngForm">
             <div class="form-group d-flex flex-column">
@@ -52,6 +52,14 @@
                 <span class="errorspan" *ngIf="!state.valid && state.touched">please enter a valid
                     state name</span>
             </div>
+            <div class="map">
+                <agm-map #map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="location.zoom"
+                    (mapClick)="mapClicked($event)" (centerChange)="mapCenterChange($event)">
+                    <agm-marker *ngFor="let marker of location.markers" [latitude]="marker.lat" [longitude]="marker.lng"
+                        [markerDraggable]="true" (dragEnd)="markerDrag($event)">
+                    </agm-marker>
+                </agm-map>
+            </div>
             <div class="form-group d-flex">
                 <button type="button" class="btn btn-danger mr-auto" (click)="onDelete()">Delete</button>
                 <button type="button" class="btn btn-outline-dark mr-2" (click)="CancelEditing.emit()">Cancel</button>
@@ -60,7 +68,9 @@
 
         </form>
     </div>
+
 </section>
+
 <div *ngIf="isLoading">
     <app-loading-spinner></app-loading-spinner>
 </div>

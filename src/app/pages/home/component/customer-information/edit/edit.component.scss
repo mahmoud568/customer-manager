@@ -1,13 +1,35 @@
-.form-group {
-  max-width: 30rem;
-}
-input.ng-invalid.ng-touched {
-  border: 1px solid red;
-  border-left: 5px solid red;
-}
-input.ng-valid.ng-touched {
-  border-left: 5px solid green;
-}
-.errorspan {
-  color: red;
+.container-fluid {
+  form {
+    display: grid;
+    grid-template-areas: "... map" "... map" "... map" "... map" "... map" "... map" "... map" "... map";
+    @media screen and (max-width: 1000px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .form-group {
+    max-width: 80%;
+  }
+  input.ng-invalid.ng-touched {
+    border: 1px solid red;
+    border-left: 5px solid red;
+  }
+  input.ng-valid.ng-touched {
+    border-left: 5px solid green;
+  }
+  .errorspan {
+    color: red;
+  }
+  .map {
+    grid-area: map;
+    @media screen and (max-width: 1000px) {
+      height: 200px;
+      max-width: 80%;
+      margin-bottom: 1rem;
+    }
+    agm-map {
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
