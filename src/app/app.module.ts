@@ -26,6 +26,12 @@ import { EditComponent } from './pages/home/component/customer-information/edit/
 
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
+import {
+  NgbAlertModule,
+  NgbModule,
+  NgbPaginationModule,
+} from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalConfirmComponent } from './shared/components/ngbd-modal-confirm/ngbd-modal-confirm.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,7 @@ import { SharedModule } from './shared/shared.module';
     DetailsComponent,
     OrdersComponent,
     EditComponent,
+    NgbdModalConfirmComponent,
     // LoadingSpinnerComponent,
   ],
   imports: [
@@ -60,6 +67,9 @@ import { SharedModule } from './shared/shared.module';
       // positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

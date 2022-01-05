@@ -60,7 +60,7 @@
         <!-- make new design validation on addCustomerView for better user experince -->
         <div class="row pl-3 my-5 sec-three" *ngIf="selectedView === 'addCustomer'">
             <div class="col-12">
-                <app-new-customer></app-new-customer>
+                <app-new-customer (CancelEditing)="selectedView = 'card'"></app-new-customer>
             </div>
         </div>
         <div class="empty" *ngIf="!isCustomers && !(selectedView === 'addCustomer')">there is no customers to view</div>
