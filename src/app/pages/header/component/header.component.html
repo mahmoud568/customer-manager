@@ -13,8 +13,12 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="/About">About</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="!admin">
                 <a class="nav-link" routerLink="/Login">Login</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="admin">
+                <div class="btn text-white" (click)="onLogout()">Logout</div>
+                <!-- <a class="nav-link" clic>Logout</a> -->
             </li>
         </ul>
 

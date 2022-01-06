@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
@@ -7,14 +7,17 @@ import { SharedService } from 'src/app/shared/services/shared.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
+  admin!: boolean;
   constructor(
     private loction: Location,
     private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {}
-
+  ngDoCheck(): void {
+    this.admin = localStorage.getItem('admin') ? true : false;
+  }
   // toggle
   navbarOpen = false;
 
@@ -36,5 +39,9 @@ export class HeaderComponent implements OnInit {
   refresh(uri: string) {
     const activeRoute = decodeURI(this.loction.path());
     if (activeRoute === uri) this.redirectTo(uri);
+  }
+  onLogout() {
+    localStorage.removeItem('admin');
+    this.redirectTo('/Login');
   }
 }

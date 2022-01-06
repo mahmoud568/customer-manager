@@ -21,8 +21,8 @@
                         <img *ngIf="customer.gender == 'female'" class="img"
                             src="../../../../assets/pics/icons/woman.png" alt="man">
                         <div class="row">
-                            <p class="col-12 m-2 font-weight-bold">{{customer.address.state}},
-                                {{customer.address.cityName}}</p>
+                            <p class="col-12 m-2 font-weight-bold">
+                                {{customer.address.cityName}}, {{customer.address.state}}</p>
                             <button class="ml-2" mat-button color="primary"
                                 (click)="customerDetailsView.emit('orders');$event.stopPropagation();"
                                 (click)="customerSelected.emit(customer)">View

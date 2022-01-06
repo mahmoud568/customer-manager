@@ -169,11 +169,39 @@ app.post("/add-customer", function (req, res) {
     status: "success",
     newCustomer: newCustomer,
   });
-  // customers.push(newCustomer);
-  // return res.json({
-  //   status: "success",
-  //   details: "customer has been deleted succefully",
-  // });
+});
+
+// login
+var adminArray = [
+  {
+    id: 0,
+    userName: "admin",
+    password: "12345",
+    adminName: "mahmoud",
+    auth: {
+      readData: true,
+      edit: true,
+      delete: true,
+      add: true,
+    },
+  },
+];
+app.post("/login", function (req, res) {
+  userName = JSON.parse(req.body.userName);
+  password = JSON.parse(req.body.password);
+  let admin = adminArray[0];
+  if (admin.userName === userName && admin.password === password) {
+    admin.password = "";
+    admin.userName = "";
+    res.json({
+      status: "success",
+      admin: admin,
+    });
+  } else {
+    res.json({
+      status: "error",
+    });
+  }
 });
 
 app.listen(3000);

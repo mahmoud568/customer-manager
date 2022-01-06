@@ -12,7 +12,5 @@ export class CardViewComponent implements OnInit {
   @Output() customerDetailsView = new EventEmitter();
 
   constructor() {}
-  ngOnInit(): void {
-    console.log(this.customers);
-  }
+  ngOnInit(): void {}
 }
