@@ -42,5 +42,10 @@
     </div>
     <div routerLinkActive="active"><a class="nav-link" routerLink="/Orders" (click)="toggleNavbar()">Orders</a></div>
     <div routerLinkActive="active"><a class="nav-link" routerLink="/About" (click)="toggleNavbar()">About</a></div>
-    <div routerLinkActive="active"><a class="nav-link" routerLink="/Login" (click)="toggleNavbar()">Login</a></div>
+    <div routerLinkActive="active" *ngIf="!admin">
+        <a class="nav-link" routerLink="/Login" (click)="toggleNavbar()">Login</a>
+    </div>
+    <div routerLinkActive="active" *ngIf="admin">
+        <div class="btn text-white" (click)="onLogout()" (click)="toggleNavbar()">Logout</div>
+    </div>
 </div>

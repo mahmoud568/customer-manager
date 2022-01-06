@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
       .login(f.value.userName, f.value.password)
       .subscribe((res: any) => {
         let admin = res.admin;
-        if (f.value.rememberMe === true) {
-          localStorage.setItem('admin', JSON.stringify(admin));
-        }
-        if (res.status === 'success') {
+        if (res.status == 'success') {
+          if (f.value.rememberMe === true) {
+            localStorage.setItem('admin', JSON.stringify(admin));
+          }
           this.toastr.success(`welcome ${admin.adminName}`);
           this.sharedService.redirectTo('Home');
         } else {
