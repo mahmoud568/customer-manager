@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
         let admin = res.admin;
         if (res.status == 'success') {
           if (f.value.rememberMe === true) {
+            delete admin.password;
+            delete admin.userName;
             localStorage.setItem('admin', JSON.stringify(admin));
           }
           this.toastr.success(`welcome ${admin.adminName}`);

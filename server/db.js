@@ -190,21 +190,16 @@ app.post("/login", function (req, res) {
   userName = JSON.parse(req.body.userName);
   password = JSON.parse(req.body.password);
   let admin = adminArray[0];
-  // to let the code take mil sec to render the response before send it back
-  setTimeout(() => {
-    if (admin.userName === userName && admin.password === password) {
-      delete admin.password;
-      delete admin.userName;
-      res.json({
-        status: "success",
-        admin: admin,
-      });
-    } else {
-      res.json({
-        status: "error",
-      });
-    }
-  }, 0);
+  if (admin.userName === userName && admin.password === password) {
+    res.json({
+      status: "success",
+      admin: admin,
+    });
+  } else {
+    res.json({
+      status: "error",
+    });
+  }
 });
 
 app.listen(3000);
