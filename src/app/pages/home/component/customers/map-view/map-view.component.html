@@ -2,7 +2,7 @@
     <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="location.zoom">
         <agm-marker *ngFor="let customer of customers" [latitude]="customer.location.latitude"
             [longitude]="customer.location.longitude" (markerClick)="customerDetailsView.emit('details')"
-            (markerClick)="customerSelected.emit(customer)">
+            (markerClick)="customerSelected.emit(customer)" [label]="customer.name.firstName">
         </agm-marker>
     </agm-map>
 </div>

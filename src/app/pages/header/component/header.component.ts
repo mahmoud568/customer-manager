@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
   onLogout() {
     localStorage.removeItem('admin');
+    this.sharedService.login(false);
     this.redirectTo('/Login');
   }
 }

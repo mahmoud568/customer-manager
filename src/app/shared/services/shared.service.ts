@@ -6,6 +6,7 @@ const BASE_URL = 'http://localhost:3000/';
   providedIn: 'root',
 })
 export class SharedService {
+  isLogedin: boolean = false;
   constructor(private router: Router) {}
   getBaseUrl() {
     return `${BASE_URL}`;
@@ -15,5 +16,9 @@ export class SharedService {
     this.router
       .navigateByUrl('/refresh', { skipLocationChange: true })
       .then(() => this.router.navigate([uri]));
+  }
+
+  login(statues: boolean) {
+    this.isLogedin = statues;
   }
 }

@@ -36,8 +36,10 @@ export class LoginComponent implements OnInit {
           }
           this.toastr.success(`welcome ${admin.adminName}`);
           this.sharedService.redirectTo('Home');
+          this.sharedService.login(true);
         } else {
           this.toastr.error(`something wrong happen please contact it`);
+          this.sharedService.login(false);
         }
       });
   }

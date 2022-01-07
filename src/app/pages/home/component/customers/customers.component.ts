@@ -44,13 +44,14 @@ export class CustomersComponent implements OnInit {
   }
 
   search(event: string) {
+    let searchText = event.toLowerCase();
     this.isLoading = true;
     this.customersevice.getCustomers().subscribe((res: any) => {
       this.isLoading = false;
       this.customers = res.customers.filter(
         (res: Customer) =>
-          res.name.firstName.includes(event) ||
-          res.name.lastName.includes(event)
+          res.name.firstName.toLowerCase().includes(searchText) ||
+          res.name.lastName.toLowerCase().includes(searchText)
       );
       if (this.customers.length > 0) {
         this.isCustomers = true;
