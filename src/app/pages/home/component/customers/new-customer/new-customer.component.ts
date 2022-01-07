@@ -98,10 +98,11 @@ export class NewCustomerComponent implements OnInit {
       modalRef.result.then((res) => {
         this.isLoading = true;
         if (res === 'ok') {
+          console.log(this.customer);
           this.customersService
             .addCustomer(this.customer)
             .subscribe((res: any) => {
-              if (res.success == 'success') this.CancelEditing.emit();
+              if (res.status == 'success') this.CancelEditing.emit();
               else
                 this.toastr.error(
                   'seomthing gone wrong please connect with technical team'

@@ -2,24 +2,32 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './pages/home/component/home.component';
+import { LoginComponent } from './pages/login/component/login.component';
+import { AuthGuard } from './shared/auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/Home', pathMatch: 'full' },
-  { path: 'Home', component: HomeComponent },
+  { path: '', redirectTo: '/Login', pathMatch: 'full' },
+  {
+    path: 'Home',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard],
+  },
   {
     path: 'Orders',
     loadChildren: () =>
       import('./pages/orders/orders.module').then((m) => m.OrdersModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'About',
     loadChildren: () =>
       import('./pages/about/about.module').then((m) => m.AboutModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'Login',
-    loadChildren: () =>
-      import('./pages/login/login.module').then((m) => m.LoginModule),
+    component: LoginComponent,
   },
   {
     path: 'refresh',
