@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngOnInit(): void {}
   ngDoCheck(): void {
     this.admin = localStorage.getItem('admin') ? true : false;
+    if(!this.admin) {this.admin = this.sharedService.isLogedin;}
   }
   // toggle
   navbarOpen = false;
