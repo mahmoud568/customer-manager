@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
   onLogin(f: NgForm) {
     localStorage.removeItem('admin');
     this.loginService
@@ -42,5 +43,9 @@ export class LoginComponent implements OnInit {
           this.sharedService.login(false);
         }
       });
+  }
+
+  forgetPassword() {
+    this.toastr.error(`user name is 'admin', password is '12345'`);
   }
 }

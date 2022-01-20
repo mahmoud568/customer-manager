@@ -18,7 +18,7 @@
                 <a class="nav-link" routerLink="/Login">Login</a>
             </li>
             <li class="nav-item" routerLinkActive="active" *ngIf="admin">
-                <div class="btn text-white" (click)="onLogout()">Logout</div>
+                <a class="btn text-white" (click)="onLogout()">Logout</a>
                 <!-- <a class="nav-link" clic>Logout</a> -->
             </li>
         </ul>
@@ -47,6 +47,6 @@
         <a class="nav-link" routerLink="/Login" (click)="toggleNavbar()">Login</a>
     </div>
     <div routerLinkActive="active" *ngIf="admin">
-        <div class="btn text-white" (click)="onLogout()" (click)="toggleNavbar()">Logout</div>
+        <a class="btn text-white" (click)="onLogout()" (click)="toggleNavbar()">Logout</a>
     </div>
 </div>
