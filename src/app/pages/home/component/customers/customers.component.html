@@ -66,7 +66,7 @@
                 </app-new-customer>
             </div>
         </div>
-        <div class="empty" *ngIf="!isCustomers && !(selectedView === 'addCustomer')">there is no customers to view</div>
+        <div class="empty" *ngIf="!isCustomers && !(selectedView === 'addCustomer') && !isLoading">there is no customers to view</div>
     </div>
 </section>
 
