@@ -37,7 +37,8 @@
             <div class="Search col-md-5" *ngIf="!(selectedView === 'addCustomer')">
                 <div>
                     <div>Filter:</div>
-                    <input type="text" #myInput (keyup)="search(myInput.value)">
+                    <input type="text" #myInput (keyup.enter)="search(myInput.value)">
+                    <a class="Search-btn" (click)="search(myInput.value)"><img src="../../../assets/pics/icons/search.svg" /></a>
                 </div>
 
             </div>

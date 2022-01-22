@@ -50,8 +50,7 @@ export class CustomersComponent implements OnInit {
       this.isLoading = false;
       this.customers = res.customers.filter(
         (res: Customer) =>
-          res.name.firstName.toLowerCase().includes(searchText) ||
-          res.name.lastName.toLowerCase().includes(searchText)
+          `${res.name.firstName.toLowerCase()} ${res.name.lastName.toLowerCase()}`.includes(searchText)
       );
       if (this.customers.length > 0) {
         this.isCustomers = true;

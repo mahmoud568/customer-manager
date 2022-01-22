@@ -57,6 +57,10 @@
     .Search {
       display: flex;
       justify-content: flex-end;
+      .Search-btn{
+        padding-left: 7px;
+        cursor: pointer;
+      }
       @media only screen and (max-width: 600px) {
         justify-content: flex-start;
         margin-left: -1.3rem;
