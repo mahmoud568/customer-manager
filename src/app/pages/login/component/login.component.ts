@@ -10,6 +10,8 @@ import { LoginService } from '../service/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  isLoading!: boolean;
+
   constructor(
     private sharedService: SharedService,
     private toastr: ToastrService,
@@ -25,9 +27,11 @@ export class LoginComponent implements OnInit {
 
   onLogin(f: NgForm) {
     localStorage.removeItem('admin');
+    this.isLoading = true;
     this.loginService
       .login(f.value.userName, f.value.password)
       .subscribe((res: any) => {
+        this.isLoading = false;
         let admin = res.admin;
         if (res.status == 'success') {
           if (f.value.rememberMe === true) {

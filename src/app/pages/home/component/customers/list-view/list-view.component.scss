@@ -9,6 +9,18 @@
       }
       font-size: 1rem;
       font-weight: bolder;
+      .headers {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        .material-icons {
+          cursor: pointer;
+        }
+        .flip {
+          transition: transform 0.8s;
+          transform: rotatez(180deg);
+        }
+      }
     }
     td {
       @media screen and (max-width: 700px) {

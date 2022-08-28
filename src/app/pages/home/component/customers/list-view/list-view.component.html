@@ -1,39 +1,97 @@
 <section>
-    <div class="contianer-fluid py-3">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Firts Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">City</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Order Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let customer of customers" (click)="customerDetailsView.emit('details')"
-                    (click)="customerSelected.emit(customer)">
-                    <!-- diplay none headers for mobile view and replave it with mobile-view-header -->
-                    <td scope="d-flex">
-                        <img *ngIf="customer.gender == 'male'" class="img" src="../../../../assets/pics/icons/man.png"
-                            alt="man">
-                        <img *ngIf="customer.gender == 'female'" class="img"
-                            src="../../../../assets/pics/icons/woman.png" alt="man">
-                    </td>
-                    <td><span class="mobile-view-header">Firts Name: </span>{{customer.name.firstName}}</td>
-                    <td><span class="mobile-view-header">Last Name: </span>{{customer.name.lastName}}</td>
-                    <td><span class="mobile-view-header">Address: </span>{{customer.address.streetAddress}}
-                    </td>
-                    <td><span class="mobile-view-header">City: </span>{{customer.address.cityName}}</td>
-                    <td><span class="mobile-view-header">State: </span>{{customer.address.state}}</td>
-                    <td><span *ngIf="customer.totalPayment !==0"><span class="mobile-view-header">Order
-                                Total: </span>{{customer.totalPayment}}$</span>
-                        <span *ngIf="customer.totalPayment ===0">has no orders</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="contianer-fluid py-3">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">
+            <p class="headers">
+              First Name
+              <span class="material-icons" id="first-name" (click)="onSortFirstName()"> swap_vert </span>
+            </p>
+          </th>
+          <th scope="col">
+            <p class="headers">
+              Last Name
+              <span class="material-icons" id="last-name" (click)="onSortLastName()"> swap_vert </span>
+            </p>
+          </th>
+          <th scope="col">
+            <p class="headers">
+              Address
+              <span class="material-icons" id="address" (click)="onSortAddress()"> swap_vert </span>
+            </p>
+          </th>
+          <th scope="col">
+            <p class="headers">
+              City
+              <span class="material-icons" id="city" (click)="onSortCity()"> swap_vert </span>
+            </p>
+          </th>
+          <th scope="col">
+            <p class="headers">
+              State
+              <span class="material-icons" id="state" (click)="onSortState()"> swap_vert </span>
+            </p>
+          </th>
+          <th scope="col">
+            <p class="headers">
+              Order Total
+              <span class="material-icons" id="order-total" (click)="onSortOrderTotal()"> swap_vert </span>
+            </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let customer of customers"
+          (click)="customerDetailsView.emit('details')"
+          (click)="customerSelected.emit(customer)"
+        >
+          <!-- diplay none headers for mobile view and replave it with mobile-view-header -->
+          <td scope="d-flex">
+            <img
+              *ngIf="customer.gender == 'male'"
+              class="img"
+              src="../../../../assets/pics/icons/man.png"
+              alt="man"
+            />
+            <img
+              *ngIf="customer.gender == 'female'"
+              class="img"
+              src="../../../../assets/pics/icons/woman.png"
+              alt="man"
+            />
+          </td>
+          <td>
+            <span class="mobile-view-header">Firts Name: </span
+            >{{ customer.name.firstName }}
+          </td>
+          <td>
+            <span class="mobile-view-header">Last Name: </span
+            >{{ customer.name.lastName }}
+          </td>
+          <td>
+            <span class="mobile-view-header">Address: </span
+            >{{ customer.address.streetAddress }}
+          </td>
+          <td>
+            <span class="mobile-view-header">City: </span
+            >{{ customer.address.cityName }}
+          </td>
+          <td>
+            <span class="mobile-view-header">State: </span
+            >{{ customer.address.state }}
+          </td>
+          <td>
+            <span *ngIf="customer.totalPayment !== 0"
+              ><span class="mobile-view-header">Order Total: </span
+              >{{ customer.totalPayment }}$</span
+            >
+            <span *ngIf="customer.totalPayment === 0">has no orders</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

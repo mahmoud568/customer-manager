@@ -5,10 +5,10 @@
 
     <div class="collapse navbar-collapse" id="navbar-list">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="this.admin">
                 <a class="nav-link" (click)="refresh('/Home')" routerLink="/Home">Customers</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="this.admin">
                 <a class="nav-link" (click)="refresh('/Orders')" routerLink="/Orders">Orders</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
