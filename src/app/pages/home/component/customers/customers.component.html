@@ -1,5 +1,5 @@
 <section>
-    <div class="container-fuild">
+    <div class="container-fuild" *ngIf="!isLoading">
         <div class="row">
             <div class="sec-one col-12">
                 <img class="customer-img" src="../../../assets/pics/icons/customer.png" alt="customer">
@@ -37,7 +37,8 @@
             <div class="Search col-md-5" *ngIf="!(selectedView === 'addCustomer')">
                 <div>
                     <div>Filter:</div>
-                    <input type="text" #myInput (keyup)="search(myInput.value)">
+                    <input type="text" #myInput (keyup.enter)="search(myInput.value)">
+                    <a class="Search-btn" (click)="search(myInput.value)"><img src="../../../assets/pics/icons/search.svg" /></a>
                 </div>
 
             </div>
@@ -65,7 +66,7 @@
                 </app-new-customer>
             </div>
         </div>
-        <div class="empty" *ngIf="!isCustomers && !(selectedView === 'addCustomer')">there is no customers to view</div>
+        <div class="empty" *ngIf="!isCustomers && !(selectedView === 'addCustomer') && !isLoading">there is no customers to view</div>
     </div>
 </section>
 

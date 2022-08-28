@@ -31,8 +31,9 @@
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+            <a class="underlineHover" (click)="forgetPassword()">Forgot Password?</a>
         </div>
 
     </div>
 </div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

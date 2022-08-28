@@ -38,7 +38,7 @@ import {
     CustomerInformationComponent,
     DetailsComponent,
     OrdersComponent,
-    EditComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

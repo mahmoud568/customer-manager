@@ -22,7 +22,6 @@ const routes: Routes = [
     path: 'About',
     loadChildren: () =>
       import('./pages/about/about.module').then((m) => m.AboutModule),
-    canActivate: [AuthGuard],
   },
   {
     path: 'Login',
@@ -31,6 +30,12 @@ const routes: Routes = [
   {
     path: 'refresh',
     children: [],
+  },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard],
   },
 ];
 
